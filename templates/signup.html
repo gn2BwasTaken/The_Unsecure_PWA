@@ -1,18 +1,116 @@
-{% extends 'layout.html' %}
-{% block content %}
+{% extends 'layout.html' %} {% block content %}
 <h1>Signup Form</h1>
 <form action="/signup.html" method="POST" class="box">
-    <div class="input__wrapper">
-        <input type="text" name="username" placeholder="Username" class="input__field">
-    </div>            
-    <div class="input__wrapper">
-        <input type="password" name="password" placeholder="Password" class="input__field">
-    </div>
-    <div class="input__wrapper">
-        <input type="dateOfBirth" name="dob" placeholder="Date of Birth" class="input__field">
-    </div>
-    <div class="input__wrapper">
-        <button type="submit" class="btn">Submit</button>
-    </div>
+  <div class="input__wrapper">
+    <input
+      id="Username"
+      type="text"
+      name="username"
+      placeholder="Username"
+      class="input__field"
+    />
+  </div>
+  <div class="input__wrapper">
+    <input
+      id="Password"
+      type="password"
+      name="password"
+      placeholder="Password"
+      class="input__field"
+    />
+  </div>
+  <div class="input__wrapper">
+    <input
+      id="DateOfBirth"
+      type="date"
+      name="dob"
+      placeholder="Date of Birth"
+      class="input__field"
+    />
+  </div>
+  <div class="validation-warning">
+    <h2>Getting there!</h2>
+    <p id="MinimumText">
+      <img src="static\images\bad.svg" />
+      12 characters minimum for passwords
+    </p>
+    <p id="SpecialChars">
+      <img src="static\images\bad.svg" />
+      special character in password
+    </p>
+    <p id="TooBasic">
+      <img src="static\images\bad.svg" />
+      uncommon password
+    </p>
+  </div>
+  <div class="input__wrapper">
+    <button id="submitButton" type="submit" class="btn">Submit</button>
+  </div>
 </form>
+<script>
+  const specialChars = ["@", "#", "(", ")", "$"];
+  const commonPasswords = ["password", "01234567890", "qwertyuiop"];
+
+  const usernameInput = document.getElementById("Username");
+  const passwordInput = document.getElementById("Password");
+  const DoBInput = document.getElementById("DateOfBirth");
+  const submitButton = document.getElementById("submitButton");
+
+  let CurrentImg = null;
+
+  const ValidationWarning = document.querySelector(".validation-warning");
+
+  passwordInput.addEventListener("input", function () {
+    if (passwordInput.value.length > 12) {
+      console.log("hallo!!");
+      CurrentImg = document.getElementById("MinimumText").querySelector("img");
+      CurrentImg.src = "static/images/good.svg";
+      CurrentImg.style.transform = "translate(0px, 2px) rotate(0deg)";
+    } else {
+      CurrentImg = document.getElementById("MinimumText").querySelector("img");
+      CurrentImg.src = "static/images/bad.svg";
+      CurrentImg.style.transform = "translate(0px, 2px) rotate(90deg)";
+    }
+    const containsWord = specialChars.some((word) =>
+      passwordInput.value.includes(word)
+    );
+    if (containsWord) {
+      console.log("omg you did it");
+      CurrentImg = document.getElementById("SpecialChars").querySelector("img");
+      CurrentImg.src = "static/images/good.svg";
+      CurrentImg.style.transform = "translate(0px, 2px) rotate(0deg)";
+    } else {
+      CurrentImg = document.getElementById("SpecialChars").querySelector("img");
+      CurrentImg.src = "static/images/bad.svg";
+      CurrentImg.style.transform = "translate(0px, 2px) rotate(90deg)";
+    }
+    const simplePassword = commonPasswords.some((word) =>
+      passwordInput.value.includes(word)
+    );
+    if (simplePassword) {
+      console.log("omg you did it");
+      CurrentImg = document.getElementById("TooBasic").querySelector("img");
+      CurrentImg.src = "static/images/bad.svg";
+      CurrentImg.style.transform = "translate(0px, 2px) rotate(90deg)";
+    } else {
+      CurrentImg = document.getElementById("TooBasic").querySelector("img");
+      CurrentImg.src = "static/images/good.svg";
+      CurrentImg.style.transform = "translate(0px, 2px) rotate(0)";
+    }
+    if (
+      document.getElementById("TooBasic").querySelector("img").src ==
+        "static/images/good.svg" &&
+      document.getElementById("MinimumText").querySelector("img").src ==
+        "static/images/good.svg" &&
+      document.getElementById("SpecialChars").querySelector("img").src ==
+        "static/images/good.svg"
+    ) {
+      submitButton.disabled = false;
+      submitButton.style.backgroundColor = "#bbb";
+    } else {
+      submitButton.disabled = true;
+      submitButton.style.backgroundColor = "#c76b73";
+    }
+  });
+</script>
 {% endblock %}

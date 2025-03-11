@@ -2,6 +2,9 @@ import sqlite3 as sql
 import time
 import random
 
+blacklist = [
+    "=","-","'"
+]
 
 def insertUser(username, password, DoB):
     con = sql.connect("database_files/database.db")
@@ -15,6 +18,11 @@ def insertUser(username, password, DoB):
 
 
 def retrieveUsers(username, password):
+    for z in blacklist:
+        if z in username:
+            return False
+        if z in password:
+            return False
     con = sql.connect("database_files/database.db")
     cur = con.cursor()
     cur.execute(f"SELECT * FROM users WHERE username = '{username}'")

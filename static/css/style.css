@@ -1,153 +1,205 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
-*   {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    background: #fdfdfd;
-    font-family: "Nunito", sans-serif;
-    font-size: 1rem;
+  background: #fdfdfd;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
 }
 h1 {
-    text-align:left;
+  text-align: left;
 }
 main {
-    max-width: 900px;
-    margin: auto;
-    padding: 0.5rem;
-    text-align: center;
+  max-width: 900px;
+  margin: auto;
+  padding: 0.5rem;
+  text-align: center;
 }
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 nav img {
-    height:100px;
+  height: 100px;
 }
 nav ul {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
 }
 nav li {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 nav ul li a {
-    text-decoration-line:none;
-    text-transform: uppercase; 
-    color: #333;
+  text-decoration-line: none;
+  text-transform: uppercase;
+  color: #333;
 }
 nav ul li a:hover {
-    color: #999;
+  color: #999;
 }
 nav h1 {
-    color: #333;
-    margin-bottom: 0.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
-.disclaimer{
-    margin:50px 0 50px 0;
+.disclaimer {
+  margin: 50px 0 50px 0;
 }
-form.box{
-    padding: 1.5rem;
-    width: 100%;
-    padding-right: 0.75rem;
-    border-radius: 0.5rem;
+form.box {
+  padding: 1.5rem;
+  width: 100%;
+  padding-right: 0.75rem;
+  border-radius: 0.5rem;
 }
 form {
-    width:100%;
+  width: 100%;
 }
-.input__wrapper{
-    position:relative;
-    padding: 1rem 0 0;
-    width: 100%;
+.input__wrapper {
+  position: relative;
+  padding: 1rem 0 0;
+  width: 100%;
 }
 .input__field {
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    border: 1px solid #000;
-    padding-right: 2rem;
-    background: transparent;
-    transition: all 0.2s;
-    width:100%;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  padding-right: 2rem;
+  background: transparent;
+  transition: all 0.2s;
+  width: 100%;
 }
-.input__field:placeholder-shown
-~.input__label {
-    font-size: 1rem;
-    cursor: text;
-    top: 1.5rem;
+.input__field:placeholder-shown ~ .input__label {
+  font-size: 1rem;
+  cursor: text;
+  top: 1.5rem;
 }
 label,
-.input__field:focus~.input__label{
-    position: absolute;
-    top: 0.075rem;
-    padding: 1 0.05rem;
-    display: block;
-    font-size: 1.5rem;
-    left: 0.5rem;
-    transition: 0.3s;
+.input__field:focus ~ .input__label {
+  position: absolute;
+  top: 0.075rem;
+  padding: 1 0.05rem;
+  display: block;
+  font-size: 1.5rem;
+  left: 0.5rem;
+  transition: 0.3s;
 }
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    grid-gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 1rem 0;
 }
 .card {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 17rem;
-    background: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    border-radius: 10px;
-    margin: auto;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 17rem;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+  margin: auto;
+  overflow: hidden;
 }
 .card-image {
-    width: 100%;
-    height: 15rem;
-    object-fit: cover;
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
 }
 .card-name {
-    color: #333;
-    font-weight: 700;
-    text-transform: capitalize;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
+  color: #333;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
 }
 .card-about {
-    text-overflow: ellipsis;
-    width: 15rem;
-    white-space: nowrap;
-    overflow: hidden;
-    margin-bottom:1rem;
+  text-overflow: ellipsis;
+  width: 15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 .btn {
-    border:none;
-    background:none;
-    border-radius:5px;
-    box-shadow:1px 1px 2px rgba(21, 21, 21, 0.1);
-    cursor:pointer;
-    font-size:1.25rem;
-    margin:0 1rem;
-    padding:.25rem 2rem;
-    transition:all .25s ease-in-out;
-    background: #bbb;
-    color:#333;
-    margin-bottom:1rem;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(21, 21, 21, 0.1);
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin: 0 1rem;
+  padding: 0.25rem 2rem;
+  transition: all 0.25s ease-in-out;
+  background: #bbb;
+  color: #333;
+  margin-bottom: 1rem;
 }
-.btn:focus, .btn:hover {
-    box-shadow:1px 1px 2px rgba(0, 0, 0, 0.2);
-    background: #bbb;
+.btn:focus,
+.btn:hover {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  background: #bbb;
 }
 .about-container {
-    font-size:1.25rem;
-    margin-top:2rem;
-    text-align: justify;
-    text-justify: inter-word;
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.validation-warning {
+  display: block;
+  margin-top: 1rem;
+  background-color: #e9e9e9;
+  border-color: #b1b1b1;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 1px;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.validation-warning h2 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-weight: 100;
+}
+
+.validation-warning p {
+  padding: 8px;
+  margin: 5px;
+  background-color: #c3c3c3;
+  border-color: #979797;
+  border-style: solid;
+  border-width: 1px;
+}
+
+@keyframes changedIconValidation {
+  0% {
+    transform: translate(0px, 2px) scale(1) rotate(180deg);
+  }
+  50% {
+    transform: translate(0px, 2px) scale(2);
+  }
+  75% {
+    transform: translate(0px, 2px) scale(0.8) rotate(-20deg);
+  }
+  100% {
+    transform: translate(0px, 2px) scale(1) rotate(0deg);
+  }
+}
+
+.validation-warning img {
+  max-height: 1em;
+  background-color: white;
+  transform: translate(0px, 2px) rotate(90deg);
+  border-radius: 100%;
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

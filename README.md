@@ -32,8 +32,7 @@ Sandboxing creates a safe place to install or execute a program, particularly a 
 - [CodeSandbox.io](https://codesandbox.io/) note: CodeSandbox.io requires manual configuration of the VM after deploying the template
 - [Docker Container](https://code.visualstudio.com/docs/devcontainers/containers)
 
-> [!Important]
-> **The Unsecure PWA includes the [.codesandbox](.codesandbox), [.devcontainer](.devcontainer) and [.vscode](.vscode) to auto-configure all the above sandboxes.**
+> [!Important] > **The Unsecure PWA includes the [.codesandbox](.codesandbox), [.devcontainer](.devcontainer) and [.vscode](.vscode) to auto-configure all the above sandboxes.**
 
 Other Sandbox options:
 
