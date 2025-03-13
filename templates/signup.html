@@ -29,7 +29,7 @@
     />
   </div>
   <div class="validation-warning">
-    <h2>Getting there!</h2>
+    <h2 id="ConfirmationText">No Password</h2>
     <p id="MinimumText">
       <img src="static\images\bad.svg" />
       12 characters minimum for passwords
@@ -54,62 +54,77 @@
   const usernameInput = document.getElementById("Username");
   const passwordInput = document.getElementById("Password");
   const DoBInput = document.getElementById("DateOfBirth");
-  const submitButton = document.getElementById("submitButton");
+  let ConfirmationText = document.getElementById("ConfirmationText");
 
   let CurrentImg = null;
+
+  let NotBasic = false;
+  let MinimumText = false;
+  let SpecialChars = false;
 
   const ValidationWarning = document.querySelector(".validation-warning");
 
   passwordInput.addEventListener("input", function () {
     if (passwordInput.value.length > 12) {
+      MinimumText = true;
       console.log("hallo!!");
       CurrentImg = document.getElementById("MinimumText").querySelector("img");
       CurrentImg.src = "static/images/good.svg";
-      CurrentImg.style.transform = "translate(0px, 2px) rotate(0deg)";
+      CurrentImg.style.transform =
+        "translate(0px, 2px) rotate(0deg) scale(1.5,1.5)";
     } else {
+      MinimumText = false;
       CurrentImg = document.getElementById("MinimumText").querySelector("img");
       CurrentImg.src = "static/images/bad.svg";
-      CurrentImg.style.transform = "translate(0px, 2px) rotate(90deg)";
+      CurrentImg.style.transform =
+        "translate(0px, 2px) rotate(90deg) scale(1,1)";
     }
-    const containsWord = specialChars.some((word) =>
-      passwordInput.value.includes(word)
+    let containsWord = specialChars.some((word) =>
+      (" " + String(passwordInput.value)).includes(word)
     );
     if (containsWord) {
       console.log("omg you did it");
+      SpecialChars = true;
       CurrentImg = document.getElementById("SpecialChars").querySelector("img");
       CurrentImg.src = "static/images/good.svg";
-      CurrentImg.style.transform = "translate(0px, 2px) rotate(0deg)";
+      CurrentImg.style.transform =
+        "translate(0px, 2px) rotate(0deg) scale(1.5,1.5)";
     } else {
+      SpecialChars = false;
       CurrentImg = document.getElementById("SpecialChars").querySelector("img");
       CurrentImg.src = "static/images/bad.svg";
-      CurrentImg.style.transform = "translate(0px, 2px) rotate(90deg)";
+      CurrentImg.style.transform =
+        "translate(0px, 2px) rotate(90deg) scale(1,1)";
     }
-    const simplePassword = commonPasswords.some((word) =>
-      passwordInput.value.includes(word)
+    let simplePassword = commonPasswords.some((word) =>
+      (" " + String(passwordInput.value)).includes(word)
     );
     if (simplePassword) {
+      NotBasic = false;
       console.log("omg you did it");
       CurrentImg = document.getElementById("TooBasic").querySelector("img");
       CurrentImg.src = "static/images/bad.svg";
-      CurrentImg.style.transform = "translate(0px, 2px) rotate(90deg)";
+      CurrentImg.style.transform =
+        "translate(0px, 2px) rotate(90deg) scale(1,1)";
     } else {
+      NotBasic = true;
       CurrentImg = document.getElementById("TooBasic").querySelector("img");
       CurrentImg.src = "static/images/good.svg";
-      CurrentImg.style.transform = "translate(0px, 2px) rotate(0)";
+      CurrentImg.style.transform =
+        "translate(0px, 2px) rotate(0) scale(1.5,1.5)";
     }
-    if (
-      document.getElementById("TooBasic").querySelector("img").src ==
-        "static/images/good.svg" &&
-      document.getElementById("MinimumText").querySelector("img").src ==
-        "static/images/good.svg" &&
-      document.getElementById("SpecialChars").querySelector("img").src ==
-        "static/images/good.svg"
-    ) {
-      submitButton.disabled = false;
+    let submitButton = document.getElementById("submitButton");
+    //console.log(NotBasic, MinimumText, SpecialChars);
+    if (NotBasic && MinimumText && SpecialChars) {
+      console.log("all three!");
+      //submitButton.disabled = false; //here is where it errors
       submitButton.style.backgroundColor = "#bbb";
+      ConfirmationText.innerHTML = "You're good to go!";
     } else {
-      submitButton.disabled = true;
+      console.log("not all three!");
+      //submitButton.disabled = true;
       submitButton.style.backgroundColor = "#c76b73";
+      ConfirmationText.innerHTML = "Still has some issues.";
     }
   });
 </script>

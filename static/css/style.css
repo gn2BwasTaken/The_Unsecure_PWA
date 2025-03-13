@@ -170,6 +170,7 @@ label,
   padding-left: 3rem;
   padding-right: 3rem;
   font-weight: 100;
+  padding-bottom: 8px;
 }
 
 .validation-warning p {
@@ -200,6 +201,7 @@ label,
   max-height: 1em;
   background-color: white;
   transform: translate(0px, 2px) rotate(90deg);
+  margin-right: 5px;
   border-radius: 100%;
   transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
