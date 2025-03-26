@@ -6,6 +6,8 @@
 
 <hr style="border: 0.1rem solid #d1d9e0;background:#d1d9e0"/>
 
+# THIS IS AN ASSESSMENT FOR HSC, I WOULD NOT USE IT LOL
+
 # The Unsecure PWA
 
 Your client, "The Unsecure PWA Company", has engaged you as a software engineering security specialist to provide expert advice on the security and privacy of their application. This progressive web app is currently in the testing and debugging phase of the software development lifecycle.
