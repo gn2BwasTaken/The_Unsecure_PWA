@@ -48,10 +48,11 @@ def addFeedback():
         url = request.args.get("url", "")
         return redirect(url, code=302)
     if request.method == "POST":
-        feedback = request.form["feedback"]
-        dbHandler.insertFeedback(feedback)
-        dbHandler.listFeedback()
-        return render_template("/success.html", state=True, value="Back")
+        if 'username' in session: 
+            feedback = request.form["feedback"]
+            dbHandler.insertFeedback(feedback)
+            dbHandler.listFeedback()
+            return render_template("/success.html", state=True, value="Back")
     else:
         dbHandler.listFeedback()
         return render_template("/success.html", state=True, value="Back")
@@ -64,13 +65,15 @@ def signup():
         url = request.args.get("url", "")
         return redirect(url, code=302)
     if request.method == "POST":
+        if len(request.form["password"]) < 12:
+            return redirect(url_for('home'))
         username = request.form["username"]
         password = generate_password_hash(request.form['password'])
         dateOfBirth = request.form["dob"]
         new_user = User(username=username, password=password, dateOfBirth=dateOfBirth)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     else:
         return render_template("/signup.html")
 
@@ -83,30 +86,25 @@ def home():
         url = request.args.get("url", "")
         return redirect(url, code=302)
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        user = User.query.filter_by(username=username).first()
-        if user and check_password_hash(user.password, password):
-            session['username'] = user.username
-            return render_template("/success.html", value=username, state=True)
-        else:
-            return 'Invalid credentials'
-        
-        """
-        isLoggedIn = dbHandler.retrieveUsers(username, password)
-        if isLoggedIn:
-            dbHandler.listFeedback()
-            return render_template("/success.html", value=username, state=isLoggedIn)
-        else:
-            return render_template("/index.html")
-        """
+        try:
+            username = request.form["username"]
+            password = request.form["password"]
+            user = User.query.filter_by(username=username).first()
+            if user and check_password_hash(user.password, password):
+                session['username'] = user.username
+                return render_template("/success.html", value=username, state=True)
+            else:
+                return 'Invalid credentials'
+        except:
+            return 'An error occured'
+
     else:
         return render_template("/index.html")
 
 @app.route('/logout') #enables log out
 def logout():
     session.pop('username', None)
-    return render_template("/index.html")
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.config["TEMPLATES_AUTO_RELOAD"] = True
